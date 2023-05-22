@@ -7,6 +7,9 @@ class MoviePosterManagerTest {
     MoviePosterManager manager = new MoviePosterManager();
     MoviePosterManager manager2 = new MoviePosterManager(3);
 
+    MoviePosterManager manager3 = new MoviePosterManager(7);
+
+
     MoviePoster movie1 = new MoviePoster(1, "Бладшот", "боевик");
     MoviePoster movie2 = new MoviePoster(2, "Вперёд", "мультфильм");
     MoviePoster movie3 = new MoviePoster(3, "Отель \"Белград\"", "комедия");
@@ -37,6 +40,18 @@ class MoviePosterManagerTest {
         manager2.addNewMovie(movie7);
     }
 
+    @BeforeEach
+    public void setup3() {
+        manager3.addNewMovie(movie1);
+        manager3.addNewMovie(movie2);
+        manager3.addNewMovie(movie3);
+        manager3.addNewMovie(movie4);
+        manager3.addNewMovie(movie5);
+        manager3.addNewMovie(movie6);
+        manager3.addNewMovie(movie7);
+    }
+
+
     @Test
     public void testLimitManager() {
 
@@ -47,6 +62,12 @@ class MoviePosterManagerTest {
     public void testLimitManagerIf3() {
 
         Assertions.assertEquals(3, manager2.getLimitManager());
+    }
+
+    @Test
+    public void testLimitManageIf7() {
+
+        Assertions.assertEquals(7, manager3.getLimitManager());
     }
 
     @Test
@@ -63,6 +84,15 @@ class MoviePosterManagerTest {
 
         MoviePoster[] expected = {movie7, movie6, movie5, movie4, movie3};
         MoviePoster[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void findLastIf7() {
+
+        MoviePoster[] expected = {movie7, movie6, movie5, movie4, movie3, movie2, movie1};
+        MoviePoster[] actual = manager3.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
     }

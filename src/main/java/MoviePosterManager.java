@@ -1,6 +1,8 @@
 public class MoviePosterManager {
     private int limitManager = 5;
 
+    public MoviePoster[] movies = new MoviePoster[0];
+
     public MoviePosterManager() {
     }
 
@@ -12,8 +14,6 @@ public class MoviePosterManager {
         return limitManager;
     }
 
-
-    public MoviePoster[] movies = new MoviePoster[0];
 
     public void addNewMovie(MoviePoster movie) {
         MoviePoster[] tmp = new MoviePoster[movies.length + 1];
